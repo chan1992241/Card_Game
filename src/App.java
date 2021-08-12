@@ -7,6 +7,7 @@ public class App {
         Player p5 = CardPlayer.getInstance();
         Player p6 = CardPlayer.getInstance();
         // System.out.println(p1);
+        System.out.println(p1.getName());
         System.out.println(p2.getName());
         System.out.println(p3.getName());
         System.out.println(p4.getName());
