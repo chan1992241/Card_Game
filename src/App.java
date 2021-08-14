@@ -7,13 +7,15 @@ public class App {
         Player p5 = CardPlayer.getInstance();
         Player p6 = CardPlayer.getInstance();
         // System.out.println(p1);
-        System.out.println(p1.getName());
-        System.out.println(p2.getName());
-        System.out.println(p3.getName());
-        System.out.println(p4.getName());
-        System.out.println(p5.getName());
-        System.out.println(p6.getName());
+        // System.out.println(p1.getName());
+        // System.out.println(p2.getName());
+        // System.out.println(p3.getName());
+        // System.out.println(p4.getName());
+        // System.out.println(p5.getName());
+        // System.out.println(p6.getName());
         System.out.println(CardPlayer.totalNumberOfPlayer);
-
+        CardPlayer.removeInstance();
+        CardPlayer.removeInstance();
+        System.out.println(CardPlayer.totalNumberOfPlayer);
     }
 }
