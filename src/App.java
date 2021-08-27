@@ -1,21 +1,33 @@
+import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
-        Player p1 = CardPlayer.getInstance();
-        Player p2 = CardPlayer.getInstance();
-        Player p3 = CardPlayer.getInstance();
-        Player p4 = CardPlayer.getInstance();
-        Player p5 = CardPlayer.getInstance();
-        Player p6 = CardPlayer.getInstance();
-        // System.out.println(p1);
-        // System.out.println(p1.getName());
-        // System.out.println(p2.getName());
-        // System.out.println(p3.getName());
-        // System.out.println(p4.getName());
-        // System.out.println(p5.getName());
-        // System.out.println(p6.getName());
-        System.out.println(CardPlayer.totalNumberOfPlayer);
-        CardPlayer.removeInstance();
-        CardPlayer.removeInstance();
-        System.out.println(CardPlayer.totalNumberOfPlayer);
+        CardGame cardGame = new CardGame();
+        boolean play = true;
+        Scanner input = new Scanner(System.in);
+        while (play){
+            System.out.println("Card Game \n Player Options");
+            System.out.println("1. Start Game \n  \n2. Exit Game");
+            System.out.print("Please provide your option : ");
+            while (!input.hasNextInt()) {
+                input.next(); // What happens if you use nextLine() instead?
+            }
+            int resp = input.nextInt(); // if there is another number  
+            if (resp == 1){
+                System.out.println("Provide the Number of Players( should be greater than 1 and less than 4) : ");
+                int numberOfPlayer = input.nextInt();
+                while (numberOfPlayer < 2 || numberOfPlayer > 4){
+                    System.out.println("Number of player should be between 4 and 2");
+                    numberOfPlayer = input.nextInt();
+                }
+                cardGame.playGame(numberOfPlayer);
+                cardGame.displayWinner(); 
+            }else if (resp == 2){
+                play = false;
+                break;
+            }else{
+                System.out.println("Wrong command, should be 1 or 2");
+            }
+        }
+        input.close();
     }
 }
