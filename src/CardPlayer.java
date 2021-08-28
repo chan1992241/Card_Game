@@ -11,7 +11,7 @@ public class CardPlayer extends Player {
     }
     public CardPlayer(){
         super();
-        super.setName("Default Name " +  totalNumberOfPlayer);
+        super.setName("Default Name " +  (totalNumberOfPlayer - 1));
     }
     public int getTotalPoints(){
         return this.totalPoints;
