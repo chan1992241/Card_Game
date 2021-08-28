@@ -90,13 +90,13 @@ public class CardGame {
             playerDeck.put(pl, cards);
         }
     }
-    public void createUser(int numberOfUSer){
+    private void createUser(int numberOfUSer){
         for (int i = 0; i < numberOfUSer; i++){
             CardPlayer usr = CardPlayer.getInstance();
             player.add(usr);
         }
     }
-    public  void removeUser(int numberOfUser){
+    private  void removeUser(int numberOfUser){
         for (int i = 0; i < numberOfUser; i++){
             CardPlayer.removeInstance();
         }
