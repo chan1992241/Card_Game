@@ -11,7 +11,7 @@ public class CardPlayer extends Player {
     }
     public CardPlayer(){
         super();
-        super.setName("Default Name " +  (totalNumberOfPlayer - 1));
+        super.setName("Default Name " +  (totalNumberOfPlayer));
     }
     public int getTotalPoints(){
         return this.totalPoints;
@@ -23,7 +23,6 @@ public class CardPlayer extends Player {
     //method to prevent more than 4 player object
     public static CardPlayer getInstance(){
         if (totalNumberOfPlayer < 4){
-            // if (totalNumberOfPlayer != 4) totalNumberOfPlayer++;
             restrictNumberOfPlayer.add(new CardPlayer());
             totalNumberOfPlayer = restrictNumberOfPlayer.size();
         }
@@ -35,7 +34,6 @@ public class CardPlayer extends Player {
     }
     public static CardPlayer getInstance(String name){
         if (totalNumberOfPlayer < 4){
-            // if (totalNumberOfPlayer != 4) totalNumberOfPlayer++;
             restrictNumberOfPlayer.add(new CardPlayer(name));
             totalNumberOfPlayer = restrictNumberOfPlayer.size();
         }

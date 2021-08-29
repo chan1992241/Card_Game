@@ -1,5 +1,3 @@
-import java.util.Collections;
-import java.util.List;
 //Store the cards
 public class Card implements Comparable<Card> {	
 	//variable
@@ -7,11 +5,6 @@ public class Card implements Comparable<Card> {
 	private int cardType;
 
 	//method
-	//mix and shuffle
-	public static void shuffleCards(List<Card> cards)
-    {
-            Collections.shuffle(cards);
-    }	
 	//constructor
 	public Card(int cardNumber, int cardType) {
 		super();
