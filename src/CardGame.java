@@ -11,8 +11,9 @@ public class CardGame {
     private int numberOfPlayers;
     
     public void playGame(int numberOfPlayers){
-        removeUser(numberOfPlayers);
-        player.clear();
+        if (player.size() > 0){
+            removeUser(numberOfPlayers);
+        }
         Card maxCard = null;
         CardPlayer maxCardPlayer = new CardPlayer();
         this.numberOfPlayers = numberOfPlayers;
@@ -44,20 +45,27 @@ public class CardGame {
                     }
                 }
                 if (game_option == 1){
-                    displayCard(plyr);
-                    System.out.println("Select your card number: ");
-                    input = new Scanner(System.in);
-                    int cardSelected = input.nextInt();
-                    Card currCard = playerDeck.get(plyr).get(cardSelected - 1);
-                    System.out.println(currCard.toString());
-                    playerDeck.get(plyr).remove(cardSelected - 1);
-                    if (maxCard == null){
-                        maxCard = currCard;
-                        maxCardPlayer = plyr;
-                    }else{
-                        if (maxCard.compareTo(currCard) < 0){
-                            maxCard = currCard;
-                            maxCardPlayer = plyr;
+                    while (true){
+                        try{
+                            displayCard(plyr);
+                            System.out.println("Select your card number: ");
+                            input = new Scanner(System.in);
+                            int cardSelected = input.nextInt();
+                            Card currCard = playerDeck.get(plyr).get(cardSelected - 1);
+                            System.out.println(currCard.toString());
+                            playerDeck.get(plyr).remove(cardSelected - 1);
+                            if (maxCard == null){
+                                maxCard = currCard;
+                                maxCardPlayer = plyr;
+                            }else{
+                                if (maxCard.compareTo(currCard) < 0){
+                                    maxCard = currCard;
+                                    maxCardPlayer = plyr;
+                                }
+                            }
+                            break;
+                        }catch (Exception e){
+                            System.out.println("Your input is not in range");
                         }
                     }
                 }
@@ -90,16 +98,17 @@ public class CardGame {
             playerDeck.put(pl, cards);
         }
     }
-    private void createUser(int numberOfUSer){
+    public void createUser(int numberOfUSer){
         for (int i = 0; i < numberOfUSer; i++){
             CardPlayer usr = CardPlayer.getInstance();
             player.add(usr);
         }
     }
-    private  void removeUser(int numberOfUser){
+    public void removeUser(int numberOfUser){
         for (int i = 0; i < numberOfUser; i++){
             CardPlayer.removeInstance();
         }
+        player.clear();
     }
     private void displayCard(CardPlayer pl){
         int cards = playerDeck.get(pl).size();
@@ -134,5 +143,17 @@ public class CardGame {
             System.out.print(" win the game with score: -> " + maxScore);
             System.out.println("");
         }
+    }
+    public ArrayList<CardPlayer> getPlayer(){
+        return this.player;
+    }
+    public HashMap<CardPlayer, ArrayList<Card>> getPlayerDeck(){
+        return this.playerDeck;
+    }
+    public Deck getDeck(){
+        return this.deck;
+    }
+    public void setDeck(){
+        this.deck = new Deck();
     }
 }
